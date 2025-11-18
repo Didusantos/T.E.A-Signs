@@ -2,9 +2,7 @@ package com.unipaulistana.TeaSigns.controller;
 
 import com.unipaulistana.TeaSigns.domainmodel.Device;
 import com.unipaulistana.TeaSigns.domainmodel.User;
-import com.unipaulistana.TeaSigns.domainmodel.repositories.DeviceRepository;
 import com.unipaulistana.TeaSigns.service.DeviceService;
-import com.unipaulistana.TeaSigns.service.DeviceServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,17 +22,10 @@ public class DeviceController {
 
     private final DeviceService deviceService;
 
-
     @GetMapping
     @Operation(method = "GET", description = "Listar todos os dispositivos")
     public ResponseEntity<List<Device>> findAll() {
         return ResponseEntity.ok(this.deviceService.findAll());
-    }
-
-    @GetMapping("/{name}")
-    @Operation(method = "GET", description = "Listar todos os dispositivos por nome")
-    public ResponseEntity<List<Device>> findByName(String name) {
-        return ResponseEntity.ok(this.deviceService.findByDeviceName(name));
     }
 
     @GetMapping("/{user}")
@@ -46,6 +37,12 @@ public class DeviceController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Device>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.deviceService.findByDeviceId(id));
+    }
+
+    @GetMapping("/{name}")
+    @Operation(method = "GET", description = "Listar todos os dispositivos por nome")
+    public ResponseEntity<List<Device>> findByName(String name) {
+        return ResponseEntity.ok(this.deviceService.findByDeviceName(name));
     }
 
     @DeleteMapping("/{id}")

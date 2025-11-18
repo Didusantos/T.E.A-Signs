@@ -18,7 +18,7 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
     private EntityManager entityManager;
 
     @Override
-    public Optional<Crisis> findByInitialDateTimeAndLastDateTimeCriteria(LocalTime initalTime, LocalTime lastTime) {
+    public List<Crisis> findByInitialDateTimeAndLastDateTimeCriteria(LocalTime initalTime, LocalTime lastTime) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Crisis> query = builder.createQuery(Crisis.class);
         Root<Crisis> root = query.from(Crisis.class);
@@ -31,11 +31,11 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
         TypedQuery<Crisis> query1 = entityManager.createQuery(query);
         List<Crisis> crisis = query1.getResultList();
 
-        return crisis.stream().findFirst();
+        return query1.getResultList();
     }
 
     @Override
-    public Optional<Crisis> findByInitialDateTimeCriteriaAfter(LocalTime initalTime) {
+    public List<Crisis> findByInitialDateTimeCriteriaAfter(LocalTime initalTime) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Crisis> query = builder.createQuery(Crisis.class);
         Root<Crisis> root = query.from(Crisis.class);
@@ -46,11 +46,11 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
         TypedQuery<Crisis> query1 = entityManager.createQuery(query);
         List<Crisis> crisis = query1.getResultList();
 
-        return crisis.stream().findFirst();
+        return query1.getResultList();
     }
 
     @Override
-    public Optional<Crisis> findByLastDateTimeCriteriaBefore(LocalTime lastTime) {
+    public List<Crisis> findByLastDateTimeCriteriaBefore(LocalTime lastTime) {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Crisis> query = builder.createQuery(Crisis.class);
         Root<Crisis> root = query.from(Crisis.class);
@@ -60,11 +60,11 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
         TypedQuery<Crisis> query1 = entityManager.createQuery(query);
         List<Crisis> crisis = query1.getResultList();
 
-        return crisis.stream().findFirst();
+        return query1.getResultList();
     }
 
     @Override
-    public Optional<Crisis> findByIntensityCriteriaMin(Double intensityMin) {
+    public List<Crisis> findByIntensityCriteriaMin(Double intensityMin) {
 
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Crisis> query = builder.createQuery(Crisis.class);
@@ -74,11 +74,11 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
 
         TypedQuery<Crisis> query1 = entityManager.createQuery(query);
         List<Crisis> crisis = query1.getResultList();
-        return crisis.stream().findFirst();
+        return query1.getResultList();
     }
 
     @Override
-    public Optional<Crisis> findByIntensityCriteriaMax(Double intensityMax) {
+    public List<Crisis> findByIntensityCriteriaMax(Double intensityMax) {
 
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Crisis> query = builder.createQuery(Crisis.class);
@@ -88,6 +88,6 @@ public class CrisisRepositoryImpl implements CrisisRepositoryCustom<Crisis, UUID
 
         TypedQuery<Crisis> query1 = entityManager.createQuery(query);
         List<Crisis> crisis = query1.getResultList();
-        return crisis.stream().findFirst();
+        return query1.getResultList();
     }
 }

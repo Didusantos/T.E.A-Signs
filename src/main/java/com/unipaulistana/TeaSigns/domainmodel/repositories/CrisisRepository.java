@@ -10,12 +10,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface CrisisRepository extends JpaRepository<Crisis, UUID> {
+public interface CrisisRepository extends JpaRepository<Crisis, UUID>, CrisisRepositoryCustom<Crisis, UUID> {
 
     public Optional<Crisis> findById(UUID id);
 
     public List<Crisis> findAll();
 
     public List<Crisis> findByUser(User user);
-    
+
+
 }

@@ -9,7 +9,7 @@ import java.time.LocalTime;
 import java.util.UUID;
 
 @Entity
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "TBL_CRISIS")
