@@ -3,6 +3,7 @@ package com.unipaulistana.TeaSigns.controller;
 import com.unipaulistana.TeaSigns.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
