@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -14,8 +15,8 @@ public class CrisisServiceImpl implements CrisisService {
     private CrisisRepository crisisRepository;
 
     @Override
-    public Crisis findById(UUID id) {
-        return crisisRepository.findById(id).orElse(null);
+    public Optional<Crisis> findById(UUID id) {
+        return crisisRepository.findById(id);
     }
 
     @Override

@@ -9,22 +9,18 @@ import java.util.UUID;
 
 public interface DeviceService {
 
-    public List<Device> findByName(String name);
+    Optional<Device> findByDeviceId(UUID id);
 
-    public Optional<Device> findByDeviceId(UUID id);
+    List<Device> findByDeviceName(String name);
 
-    public List<Device> findByDeviceName(String name);
+    List<Device> findAll();
 
-    public List<Device> findAll();
+    Device createDevice(Device device);
 
-    public List<Device> findByDeviceByUser(User user);
+    Device updateDevice(Device device);
 
-    public Device createDevice(Device device);
+    void deleteDeviceById(UUID id);
 
-    public Device updateDevice(Device device);
-
-    public void deleteDeviceById(UUID id);
-
-    public Device partialUpdateDevice(Device device);
+    Device partialUpdateDevice(Device device);
 
 }

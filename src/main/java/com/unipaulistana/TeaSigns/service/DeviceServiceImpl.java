@@ -18,11 +18,6 @@ public class DeviceServiceImpl implements DeviceService {
     private final DeviceRepository deviceRepository;
 
     @Override
-    public List<Device> findByName(String name) {
-        return deviceRepository.findByName(name);
-    }
-
-    @Override
     public Optional<Device> findByDeviceId(UUID id) {
         return deviceRepository.findById(id);
     }
@@ -35,11 +30,6 @@ public class DeviceServiceImpl implements DeviceService {
     @Override
     public List<Device> findAll() {
         return deviceRepository.findAll();
-    }
-
-    @Override
-    public List<Device> findByDeviceByUser(User user) {
-        return deviceRepository.findByUser(user);
     }
 
     @Override

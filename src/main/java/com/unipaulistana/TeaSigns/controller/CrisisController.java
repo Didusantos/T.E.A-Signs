@@ -22,22 +22,22 @@ public class CrisisController {
 
     private final CrisisService crisisService;
 
-    @GetMapping
+    @GetMapping("crises")
     public ResponseEntity<List<Crisis>> findAll() {
         return ResponseEntity.ok(crisisService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Crisis> findById(@PathVariable UUID id) {
+    public ResponseEntity<Optional<Crisis>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(crisisService.findById(id));
     }
 
-    @PostMapping
+    @PostMapping("/crises")
     public ResponseEntity<Crisis> create(@RequestBody Crisis crisis) {
         return new ResponseEntity<>(this.crisisService.createCrisis(crisis), HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/crises")
     public ResponseEntity<Crisis> update(@RequestBody Crisis crisis) {
         return new ResponseEntity<>(this.crisisService.updateCrisis(crisis), HttpStatus.CREATED);
     }

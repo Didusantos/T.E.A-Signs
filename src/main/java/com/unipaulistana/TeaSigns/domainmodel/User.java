@@ -15,7 +15,7 @@ import java.util.UUID;
         @Index( name = "IDX_EMAIL", columnList = "email"),
         @Index( name = "IDX_PASSWORD", columnList = "password")
 })
-@Builder
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -34,12 +34,9 @@ public class User {
     @Column(name = "CELLPHONE")
     private @Getter @Setter String cellphone;
 
+    @Column(name = "AGE")
+    private @Getter @Setter int age;
+
     @ManyToMany
     private @Getter @Setter Set<Role> role;
-
-    @OneToMany
-    private @Getter @Setter Set<Device> device;
-
-    @ManyToMany
-    private @Getter @Setter Set<Crisis> crisis;
 }

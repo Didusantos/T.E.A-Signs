@@ -1,5 +1,6 @@
 package com.unipaulistana.TeaSigns.service;
 
+import com.unipaulistana.TeaSigns.domainmodel.Crisis;
 import com.unipaulistana.TeaSigns.domainmodel.Role;
 import com.unipaulistana.TeaSigns.domainmodel.User;
 import com.unipaulistana.TeaSigns.domainmodel.repositories.UserRepository;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -22,8 +24,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findById(UUID id) {
-        return userRepository.findById(id).orElse(null);
+    public Optional<User> findById(UUID id) {
+        return userRepository.findById(id);
     }
 
     @Override

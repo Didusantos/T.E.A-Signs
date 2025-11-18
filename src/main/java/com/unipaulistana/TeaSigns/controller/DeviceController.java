@@ -28,20 +28,14 @@ public class DeviceController {
         return ResponseEntity.ok(this.deviceService.findAll());
     }
 
-    @GetMapping("/{user}")
-    @Operation(method = "GET", description = "Listar todos os dispositivos")
-    public ResponseEntity<List<Device>> findByUser(User user) {
-        return ResponseEntity.ok(this.deviceService.findByDeviceByUser(user));
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Device>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.deviceService.findByDeviceId(id));
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/search")
     @Operation(method = "GET", description = "Listar todos os dispositivos por nome")
-    public ResponseEntity<List<Device>> findByName(String name) {
+    public ResponseEntity<List<Device>> findByName(@RequestParam String name) {
         return ResponseEntity.ok(this.deviceService.findByDeviceName(name));
     }
 
@@ -56,12 +50,12 @@ public class DeviceController {
         return new ResponseEntity<>(this.deviceService.createDevice(device), HttpStatus.CREATED);
     }
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<Device> update(@RequestBody Device device) {
         return new ResponseEntity<>(this.deviceService.updateDevice(device), HttpStatus.CREATED);
     }
 
-    @PatchMapping()
+    @PatchMapping("/{id}")
     public ResponseEntity<Device> patchUser(@RequestBody Device device) {
         return new ResponseEntity<>(this.deviceService.partialUpdateDevice(device), HttpStatus.CREATED);
     }

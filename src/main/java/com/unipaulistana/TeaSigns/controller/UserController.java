@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.unipaulistana.TeaSigns.domainmodel.User;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -30,7 +31,7 @@ public class UserController {
 
     // http://localhost:8080/users/{id}
     @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable UUID id) {
+    public ResponseEntity<Optional<User>> findById(@PathVariable UUID id) {
         return ResponseEntity.ok(this.userService.findById(id));
     }
 

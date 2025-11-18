@@ -4,29 +4,28 @@ import com.unipaulistana.TeaSigns.domainmodel.Crisis;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface CrisisService {
 
-    public Crisis findById(UUID id);
+    Optional<Crisis> findById(UUID id);
 
-    public Crisis createCrisis(Crisis crisis);
+    Crisis createCrisis(Crisis crisis);
 
-    public Crisis updateCrisis(Crisis crisis);
+    Crisis updateCrisis(Crisis crisis);
 
-    public void deleteByCrisisId(UUID id);
+    void deleteByCrisisId(UUID id);
 
-    public List<Crisis> findAll();
+    List<Crisis> findAll();
 
-    public Crisis parcialUpdate(Crisis crisis);
+    List<Crisis> findByInitialDateTimeAndLastDateTimeCriteria(LocalTime initalTime, LocalTime lastTime);
 
-    public List<Crisis> findByInitialDateTimeAndLastDateTimeCriteria(LocalTime initalTime, LocalTime lastTime);
+    List<Crisis> findByInitialDateTimeCriteriaAfter(LocalTime initalTime);
 
-    public List<Crisis> findByInitialDateTimeCriteriaAfter(LocalTime initalTime);
+    List<Crisis> findByLastDateTimeCriteriaBefore(LocalTime lastTime);
 
-    public List<Crisis> findByLastDateTimeCriteriaBefore(LocalTime lastTime);
+    List<Crisis> findByIntensityCriteriaMin(Double intensityMin);
 
-    public List<Crisis> findByIntensityCriteriaMin(Double intensityMin);
-
-    public List<Crisis> findByIntensityCriteriaMax(Double intensityMax);
+    List<Crisis> findByIntensityCriteriaMax(Double intensityMax);
 }
