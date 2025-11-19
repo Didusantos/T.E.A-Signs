@@ -45,8 +45,4 @@ public class RoleServiceImpl implements RoleService{
         this.roleRepository.deleteById(id);
     }
 
-    @Override
-    public Role partialUpdateRole(Role role) {
-        return this.roleRepository.save(role);
-    }
 }

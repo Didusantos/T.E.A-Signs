@@ -40,11 +40,6 @@ public class CrisisServiceImpl implements CrisisService {
     }
 
     @Override
-    public Crisis parcialUpdate(Crisis crisis) {
-        return crisisRepository.save(crisis);
-    }
-
-    @Override
     public List<Crisis> findByInitialDateTimeAndLastDateTimeCriteria(LocalTime initalTime, LocalTime lastTime) {
         return crisisRepository.findByInitialDateTimeAndLastDateTimeCriteria(initalTime, lastTime);
     }

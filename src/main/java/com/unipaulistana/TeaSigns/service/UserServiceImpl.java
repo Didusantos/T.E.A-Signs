@@ -6,6 +6,8 @@ import com.unipaulistana.TeaSigns.domainmodel.User;
 import com.unipaulistana.TeaSigns.domainmodel.repositories.UserRepository;
 import jdk.jfr.Registered;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +51,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public User partialUpdate(User user) {
         return this.userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
